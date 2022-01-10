@@ -4,6 +4,9 @@
 ### Instalar o Expo
 - expo init apptarefas
 
+### Instalar o Firebase
+- npm install firebase
+
 ### Rodar o projeto
 - yarn start
 - yarn android
