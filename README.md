@@ -7,6 +7,9 @@
 ### Instalar o Firebase
 - npm install firebase
 
+### Instalar icones
+- npm install react-native-vector-icons
+
 ### Rodar o projeto
 - yarn start
 - yarn android

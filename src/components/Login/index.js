@@ -1,14 +1,38 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
 
-export default function Login() {
+import firebase from '../../services/firebaseConnection';
+
+export default function Login({ changeStatus }) {
   const [type, setType] = useState('login');  
   const [email, setEmail] = useState('');
   const [password, SetPassword] = useState('');
 
 
   function handleLogin() {
-    alert('TESTE')
+    
+    if(type === 'login'){
+      const user = firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        changeStatus(user.user.uid)
+      })
+      .catch((err) => {
+        console.log(err);
+        alert('Ops algum deu errado.');
+        return;
+      })
+
+    }else{
+      const user = firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((user) => {
+        changeStatus(user.user.uid)
+      })
+      .catch((err) => {
+        console.log(err);
+        alert('Ops usuario cadastrado errado.');
+        return;
+      })
+    }
   }
 
   return (
